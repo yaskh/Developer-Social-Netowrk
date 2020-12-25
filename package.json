@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "server": "nodemon server"
+    "server": "nodemon server",
+    "format": "prettier --write */**/*.js"
   },
   "author": "Yasir",
   "license": "MIT",
