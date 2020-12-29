@@ -1,6 +1,6 @@
 {
-    "mongoURI":"mongodb+srv://test:test@cluster0.mmvfk.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "mysecret"
+    "mongoURI":"",
+    "jwtSecret": ""
 
 
 }
