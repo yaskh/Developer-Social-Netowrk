@@ -52,30 +52,34 @@ router.post(
 
       //Decrypt and check the password
 
-      const match = await bcrypt.compare(password, user.password);
-
-      if (!match) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: 'Invalid Credentials' }] })
-          .send();
-      }
-
-      const payload = {
-        user: {
-          id: match.id,
-        },
-      };
-      // Generate the JWT token
-      const token = jwt.sign(
-        payload,
-        config.jwtSecret,
-        { expiresIn: 3600000 },
-        (err, token) => {
+      const match = await bcrypt.compare(
+        password,
+        user.password,
+        (err, match) => {
           if (err) {
-            throw err;
+            return res
+              .status(400)
+              .json({ errors: [{ msg: 'Invalid Credentials' }] })
+              .send();
           }
-          return res.send({ token });
+          const payload = {
+            user: {
+              id: user.id,
+            },
+          };
+
+          // Generate the JWT token
+          const token = jwt.sign(
+            payload,
+            config.jwtSecret,
+            { expiresIn: 3600000 },
+            (err, token) => {
+              if (err) {
+                throw err;
+              }
+              return res.send({ token });
+            }
+          );
         }
       );
 

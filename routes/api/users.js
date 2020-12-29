@@ -61,6 +61,7 @@ router.post(
           id: resp.id,
         },
       };
+      console.log(payload);
       // Generate the JWT token
       const token = jwt.sign(
         payload,
