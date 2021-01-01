@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server",
     "server": "nodemon server",
-    "format": "prettier --write */**/*.js"
+    "format": "prettier --write */**/*.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Yasir",
   "license": "MIT",
